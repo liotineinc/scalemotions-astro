@@ -1,12 +1,12 @@
 export type EntryIntent = "hero" | "proof" | "audit" | "final" | "sticky" | "diagnostic";
 
 export const homeContent = {
-  nav: ["Pain", "System", "Proof", "Free Feedback", "Partners"],
+  nav: ["Pain", "System", "Proof", "Free Feedback"],
   hero: {
     eyebrow: "Performance marketing for established SMBs",
     headline: "We fight for your market share.",
     kicker:
-      "Motion is not here to run ads and hope. We research the battlefield, find the leverage, and keep pressure on your competitors.",
+      "Scale Motion is not here to run ads and hope. We research the battlefield, find the leverage, and keep pressure on your competitors.",
     body:
       "Competitor research, demographic scans, top-location targeting, high-intent keyword extraction, conversion fixes, and constant optimization. Built for owners who want a team that plays offense.",
     question: "Where are competitors beating you right now?",
@@ -125,7 +125,7 @@ export const homeContent = {
     headline:
       "We are not the right fit if you want passive marketing, cheap activity, or a vendor who avoids hard conversations.",
     body:
-      "Motion works with established SMBs that can handle more demand, respond to leads quickly, and make decisions from data. If the business cannot support growth operationally, we will say that before taking the account. Performance marketing only works when the business is ready to compete.",
+      "Scale Motion works with established SMBs that can handle more demand, respond to leads quickly, and make decisions from data. If the business cannot support growth operationally, we will say that before taking the account. Performance marketing only works when the business is ready to compete.",
   },
   audit: {
     label: "09 Free Feedback",
@@ -155,20 +155,6 @@ export const homeContent = {
     body:
       "Show us where things stand. We will give you clear feedback on what is leaking, where competitors are exposed, what locations and keywords matter most, and what to fix before we go faster.",
   },
-  partners: [
-    [
-      "Tax Write-Off",
-      "Financial Professional",
-      "Marketing may be deductible as an ordinary business expense. Ask your financial professional how to treat growth investment correctly.",
-      "Ask for a financial professional referral",
-    ],
-    [
-      "Business Funding",
-      "Loan Officer",
-      "If growth is constrained by working capital, we can route you to a lending professional for a separate funding conversation.",
-      "Ask for a loan officer referral",
-    ],
-  ],
 } as const;
 
 export const auditQuestions: Record<EntryIntent, { question: string; options: readonly string[] }> = {

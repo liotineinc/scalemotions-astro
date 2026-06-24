@@ -1,6 +1,6 @@
 # Agent Instructions
 
-This is the production Astro source repo for the Motion / SCALE MOTION website.
+This is the production Astro source repo for the Scale Motion LLC website (brand: Scale Motion).
 
 ## Core Rules
 

@@ -15,7 +15,7 @@ export const serviceCategories = [
   {
     number: "06",
     title: "Plan + Scale",
-    items: ["Competitor gap analysis", "Audience research", "90-day strategy", "Funding referrals", "Financial referrals"],
+    items: ["Competitor gap analysis", "Audience research", "90-day strategy", "Growth planning", "Market expansion support"],
   },
 ] as const;
 
@@ -26,7 +26,7 @@ export const serviceFinder = [
   "I need better ads",
   "I need better reviews",
   "I need stronger follow-up",
-  "I need funding to scale",
+  "I need a clearer growth plan",
   "I'm not sure yet",
 ] as const;
 

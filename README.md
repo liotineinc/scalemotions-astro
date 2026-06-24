@@ -1,6 +1,6 @@
 # ScaleMotions Astro
 
-Production-ready Astro source project for the Motion / Scale Motion LLC marketing website at scalemotions.com.
+Production-ready Astro source project for Scale Motion LLC at scalemotions.com.
 
 This repo replaces the previous Cloudflare Worker/TanStack React export and the temporary Webflow-uploadable planning package. The site is now a static-first Astro marketing website with semantic pages, reusable components, shared data files, SEO schema, compliance/legal routes, and lightweight forms ready to connect to GoHighLevel or another handler.
 

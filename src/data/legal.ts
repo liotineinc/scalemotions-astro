@@ -1,17 +1,23 @@
+import { site } from "./site";
+
 export const companyLegal = {
-  brand: "Motion",
+  brand: "Scale Motion",
   legalName: "Scale Motion LLC",
-  domain: "scalemotions.com",
-  website: "https://scalemotions.com",
-  contactEmail: "john@scalemotions.com",
+  domain: site.domain,
+  website: site.url,
+  contactEmail: site.contactEmail,
+  supportPhone: site.supportPhone,
   effectiveDate: "June 23, 2026",
 } as const;
 
+export const mobileDataNonSharingClause =
+  "No mobile information will be shared with third parties/affiliates for marketing/promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.";
+
 export const privacyContent = {
   eyebrow: "Privacy Policy",
-  title: "How SCALE MOTION collects, uses, protects, and shares data.",
+  title: "How Scale Motion LLC collects, uses, protects, and shares data.",
   intro:
-    "This Privacy Policy explains how SCALE MOTION, operating the Motion website and growth services, handles information collected through our website, chat widget, forms, client onboarding, Google Ads work, and related services.",
+    "This Privacy Policy explains how Scale Motion LLC, operating the Scale Motion website and growth services at scalemotions.com, handles information collected through our website, chat widget, forms, client onboarding, Google Ads work, and related services.",
   sections: [
     {
       title: "Information we collect",
@@ -42,9 +48,12 @@ export const privacyContent = {
     {
       title: "SMS, chat, and A2P/10DLC consent",
       body: [
-        "If you provide a mobile number through the SCALE MOTION chat widget and opt in to receive messages, we may send customer care and service-related SMS messages about your inquiry, support request, appointment coordination, or existing relationship with us.",
-        "Message frequency varies based on your interaction with us. Message and data rates may apply. Reply STOP to unsubscribe. Reply HELP for help.",
-        "Mobile information, text messaging opt-in data, and consent will not be shared with third parties or affiliates for their marketing or promotional purposes. Text messaging originator opt-in data and consent will not be sold or shared.",
+        "Scale Motion LLC may send customer-care and service-related SMS messages only after the user opts in through the LeadConnector/GHL chat widget on scalemotions.com.",
+        "Messages may relate to inquiries, support requests, appointment coordination, or existing service relationships.",
+        "Message frequency varies. Message and data rates may apply.",
+        "Reply STOP to unsubscribe. Reply HELP for help.",
+        "Contact Scale Motion LLC at john@scalemotions.com or (813) 500-0198.",
+        mobileDataNonSharingClause,
       ],
     },
     {
@@ -52,7 +61,8 @@ export const privacyContent = {
       body: [
         "We may share information with service providers that help us operate the website, chat widget, CRM, calendar, analytics, advertising, reporting, email, SMS delivery, security, hosting, and client service workflows.",
         "We may share information when required by law, to protect rights and security, to prevent fraud or abuse, or as part of a business transaction such as a merger, acquisition, or asset sale.",
-        "We do not sell personal information. We do not share mobile opt-in data or SMS consent for third-party marketing or promotional purposes.",
+        "We do not sell personal information.",
+        mobileDataNonSharingClause,
       ],
     },
     {
@@ -65,14 +75,18 @@ export const privacyContent = {
     {
       title: "Your choices",
       body: [
-        "You may request access, correction, deletion, or restriction of your personal information by contacting us at john@scalemotions.com.",
+        "You may request access, correction, deletion, or restriction of your personal information by contacting Scale Motion LLC at john@scalemotions.com or (813) 500-0198.",
         "You can opt out of SMS messages by replying STOP. You can request help by replying HELP. You can opt out of marketing email using the unsubscribe link in the email, when available.",
         "Clients can revoke account access through the relevant platform, including Google Ads, Google Business Profile, analytics, CRM, hosting, or advertising platforms.",
       ],
     },
     {
       title: "Contact",
-      body: ["For privacy questions, data requests, or Google Ads API privacy inquiries, contact SCALE MOTION at john@scalemotions.com."],
+      body: [
+        "For privacy questions, data requests, or Google Ads API privacy inquiries, contact Scale Motion LLC at john@scalemotions.com or (813) 500-0198.",
+        "Scale Motion LLC · St. Petersburg, FL",
+        // TODO: Add official A2P brand-registration mailing address when available from registration.
+      ],
     },
   ],
 } as const;
@@ -81,12 +95,18 @@ export const termsContent = {
   eyebrow: "Terms & Messaging Terms",
   title: "Website terms, service communications, and SMS consent.",
   intro:
-    "These Terms explain the rules for using the Motion website and the messaging terms that apply when you opt in to receive service-related text messages from SCALE MOTION.",
+    "These Terms explain the rules for using the Scale Motion website and the messaging terms that apply when you opt in to receive service-related text messages from Scale Motion LLC.",
   sections: [
+    {
+      title: "Business identity",
+      body: [
+        "Scale Motion LLC operates this website and provides customer-care and service-related communications for prospective and active clients.",
+      ],
+    },
     {
       title: "Website use",
       body: [
-        "The website and its content are provided for general business information. Using this website does not create a client relationship or require SCALE MOTION to provide services.",
+        "The website and its content are provided for general business information. Using this website does not create a client relationship or require Scale Motion LLC to provide services.",
         "You agree not to misuse the website, interfere with its operation, submit false information, attempt unauthorized access, or use the website for unlawful purposes.",
       ],
     },
@@ -98,31 +118,43 @@ export const termsContent = {
       ],
     },
     {
-      title: "SMS program description",
+      title: "SMS program",
       body: [
-        "SCALE MOTION sends customer support and service-related messages to users who submit inquiries through the website chat widget at scalemotions.com. Messages may include responses to support requests, ticket updates, appointment coordination, or follow-up communications related to an existing inquiry.",
+        "Scale Motion LLC sends customer-care and service-related text messages to users who opt in through the LeadConnector/GHL chat widget at scalemotions.com. Messages may include responses to inquiries, support requests, appointment coordination, follow-up communications, or service-related updates.",
         "Messaging is limited to customer care purposes and does not include promotional text campaigns unless you separately provide the required consent for that use.",
       ],
     },
     {
-      title: "Opt-in, opt-out, and help",
+      title: "Opt-in",
       body: [
-        "By providing your mobile number through the chat widget and confirming consent, you agree to receive customer care SMS messages from SCALE MOTION related to your inquiry or service request.",
-        "Message frequency varies based on your support interactions. Message and data rates may apply.",
-        "Reply STOP to unsubscribe. Reply HELP for help. You may also contact john@scalemotions.com for assistance.",
+        "By providing your mobile number through the chat widget and confirming consent, you agree to receive customer-care SMS messages from Scale Motion LLC related to your inquiry or service request. Consent is not a condition of purchase.",
       ],
     },
     {
-      title: "Messaging examples",
+      title: "Frequency and rates",
+      body: ["Message frequency varies. Message and data rates may apply."],
+    },
+    {
+      title: "Opt-out and help",
       body: [
-        "Hi! This is SCALE MOTION. We received your recent inquiry and a team member will follow up shortly. Reply STOP to unsubscribe.",
-        "Hello from SCALE MOTION. We are following up regarding your support request. Please let us know if you still need assistance. Reply STOP to unsubscribe.",
+        "Reply STOP to unsubscribe. Reply HELP for help. You may also contact Scale Motion LLC at john@scalemotions.com or (813) 500-0198.",
+      ],
+    },
+    {
+      title: "Privacy cross-link",
+      body: [
+        "For details on how Scale Motion LLC collects, uses, and protects information, including SMS opt-in data, please review our Privacy Policy at https://scalemotions.com/privacy/.",
       ],
     },
     {
       title: "No mobile-data sale or marketing transfer",
+      body: [mobileDataNonSharingClause],
+    },
+    {
+      title: "Messaging examples",
       body: [
-        "Mobile information, text messaging opt-in data, and consent will not be shared with third parties or affiliates for their marketing or promotional purposes. Text messaging originator opt-in data and consent will not be sold or shared.",
+        "Hi, this is Scale Motion LLC. We received your inquiry and will follow up shortly. Reply HELP for help or STOP to opt out.",
+        "Scale Motion LLC: following up on your website or marketing review request. Message frequency varies. Reply HELP for help or STOP to opt out.",
       ],
     },
     {
@@ -134,21 +166,24 @@ export const termsContent = {
     },
     {
       title: "Contact",
-      body: ["Questions about these Terms or messaging practices can be sent to john@scalemotions.com."],
+      body: [
+        "Questions about these Terms or messaging practices can be sent to Scale Motion LLC at john@scalemotions.com or (813) 500-0198.",
+        "Scale Motion LLC · St. Petersburg, FL",
+        // TODO: Add official A2P brand-registration mailing address when available from registration.
+      ],
     },
   ],
 } as const;
 
 export const goHighLevelComplianceCopy = {
   useCase:
-    "SCALE MOTION sends customer support and service-related messages to users who submit inquiries through the website https://scalemotions.com chat widget. Messages may include responses to support requests, ticket updates, appointment coordination, or follow-up communications related to an existing inquiry. Messaging is limited to customer care purposes and does not include promotional content.",
+    "Scale Motion LLC sends customer-care and service-related text messages to users who opt in through the LeadConnector/GHL chat widget at scalemotions.com. Messages may include responses to inquiries, support requests, appointment coordination, follow-up communications, or service-related updates. Messaging is limited to customer care purposes and does not include promotional content.",
   optIn:
-    "Users initiate a support request by interacting with the SCALE MOTION website https://scalemotions.com chat widget. During the chat interaction, users may voluntarily provide their mobile phone number to receive follow-up support messages. By submitting their number, users provide consent to receive customer care text messages from SCALE MOTION related to their inquiry.",
+    "Users initiate a support request by interacting with the Scale Motion LLC website https://scalemotions.com chat widget. During the chat interaction, users may voluntarily provide their mobile phone number to receive follow-up support messages. By submitting their number, users provide consent to receive customer-care text messages from Scale Motion LLC related to their inquiry.",
   optInMessage:
-    "You've opted in to receive customer care messages from SCALE MOTION regarding your inquiries or service requests. Msg frequency varies based on your support interactions. Msg & data rates may apply. Reply STOP to unsubscribe, HELP for help.",
+    "Scale Motion LLC: You're opted in for customer-care texts. Msg freq varies. Msg&data rates may apply. Reply HELP for help, STOP to opt out.",
   sampleMessages: [
-    "Hi! This is SCALE MOTION. We received your recent inquiry and a team member will follow up shortly. Reply STOP to unsubscribe.",
-    "Hello from SCALE MOTION. We are following up regarding your support request. Please let us know if you still need assistance. Reply STOP to unsubscribe.",
+    "Hi, this is Scale Motion LLC. We received your inquiry and will follow up shortly. Reply HELP for help or STOP to opt out.",
+    "Scale Motion LLC: following up on your website or marketing review request. Message frequency varies. Reply HELP for help or STOP to opt out.",
   ],
 } as const;
-

@@ -22,7 +22,7 @@ const schema = [
 
 <BaseLayout
   title="Performance Marketing for Established SMBs"
-  description="Motion researches your market, scans competitors, finds top locations and high-intent keywords, then builds the website, search, ads, CRM, and conversion system to compete."
+  description="Scale Motion researches your market, scans competitors, finds top locations and high-intent keywords, then builds the website, search, ads, CRM, and conversion system to compete."
   canonical="/"
   schema={schema}
 >
@@ -180,26 +180,6 @@ const schema = [
     body={homeContent.final.body}
     primary={{ label: "Get Free Feedback", href: "/contact" }}
   />
-
-  <section id="partners" class="container-page section">
-    <SectionLabel number="12" label="Partner referrals" />
-    <div class="grid-2" style="margin-top: 2rem;">
-      {homeContent.partners.map(([label, partner, body, cta]) => (
-        <article class="surface-card card-pad">
-          <p class="micro label-eyebrow">{label}</p>
-          <h2 class="heading-tight" style="font-size: clamp(1.8rem, 4vw, 3rem); margin-top: 0.8rem;">{partner}</h2>
-          <p class="text-muted text-pretty">{body}</p>
-          <form class="contact-form" method="post" action="" style="margin-top: 1.25rem;">
-            <!-- Integration note: connect partner referrals to GoHighLevel, Formspree, Netlify Forms, or a Cloudflare Worker endpoint. -->
-            <input class="field" name="name" placeholder="Name" autocomplete="name" required />
-            <input class="field" name="email" type="email" placeholder="Email" autocomplete="email" required />
-            <input class="field" name="business" placeholder="Business name" required />
-            <button class="outline-pill" type="submit">{cta}</button>
-          </form>
-        </article>
-      ))}
-    </div>
-  </section>
 
   <div class="sticky-cta">
     <a class="primary-pill" href="/contact">Get Free Feedback</a>

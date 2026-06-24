@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import ContactForm from "../components/ContactForm.astro";
 import SectionLabel from "../components/SectionLabel.astro";
 import { breadcrumbSchema } from "../data/schema";
+import { site } from "../data/site";
 
 const benefits = [
   "Website review",
@@ -42,6 +43,19 @@ const schema = [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact"
         <div class="surface-card card-pad" style="margin-top: 2rem;">
           <p class="micro label-eyebrow">Direct access</p>
           <p class="text-muted text-pretty">You'll speak directly with the team doing the work. No outsourced layers. No hostage accounts. No long-term handcuffs.</p>
+        </div>
+        <div class="surface-card card-pad" style="margin-top: 1rem;">
+          <p class="micro label-eyebrow">Contact</p>
+          <p class="text-muted text-pretty" style="margin-top: 0.75rem;">
+            {site.legalName}
+            <br />
+            {site.location}
+            <br />
+            <a href={site.supportPhoneHref}>{site.supportPhone}</a>
+            <br />
+            <a href={"mailto:" + site.contactEmail}>{site.contactEmail}</a>
+          </p>
+          <!-- TODO: Add official A2P brand-registration mailing address when available from registration. -->
         </div>
       </div>
       <ContactForm intent="diagnostic" source="contact" />

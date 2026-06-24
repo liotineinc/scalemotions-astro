@@ -25,8 +25,6 @@ export const pricingPackages = [
 export const pricingAddons = [
   "Website recovery",
   "Review repair support",
-  "Business funding referral",
-  "Financial professional referral",
   "AI bot / agent upgrades",
   "PR / backlink campaigns",
 ] as const;

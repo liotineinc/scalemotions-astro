@@ -11,6 +11,7 @@ export const organizationSchema = () => ({
   url: site.url,
   logo: new URL("/assets/motion-logo.png", site.url).toString(),
   email: site.contactEmail,
+  telephone: site.supportPhone,
   sameAs: site.sameAs,
 });
 
@@ -21,6 +22,7 @@ export const localBusinessSchema = () => ({
   url: site.url,
   image: new URL("/assets/motion-logo.png", site.url).toString(),
   email: site.contactEmail,
+  telephone: site.supportPhone,
   areaServed: "United States",
   address: {
     "@type": "PostalAddress",
