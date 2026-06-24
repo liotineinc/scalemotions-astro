@@ -21,7 +21,9 @@ import { site } from "../data/site";
         {footerLinks.map((link) => <a href={link.href}>{link.label}</a>)}
       </div>
       <p class="form-note" style="margin-top: 1.5rem;">
-        {site.legalName} · {site.contactEmail}
+        {site.legalName} · {site.location}
+        <br />
+        {site.contactEmail}
       </p>
     </div>
   </div>

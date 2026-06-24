@@ -1,6 +1,6 @@
 export const companyLegal = {
   brand: "Motion",
-  legalName: "SCALE MOTION",
+  legalName: "Scale Motion LLC",
   domain: "scalemotions.com",
   website: "https://scalemotions.com",
   contactEmail: "john@scalemotions.com",

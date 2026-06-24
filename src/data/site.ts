@@ -1,9 +1,10 @@
 export const site = {
   name: "Motion",
-  legalName: "SCALE MOTION",
+  legalName: "Scale Motion LLC",
   domain: "scalemotions.com",
   url: "https://scalemotions.com",
   contactEmail: "john@scalemotions.com",
+  location: "St. Petersburg, FL",
   description:
     "Motion is a performance marketing and growth agency for established SMBs that need sharper market research, visibility, conversion, and follow-up.",
   defaultTitle: "Motion | Performance Marketing for Established SMBs",
@@ -11,6 +12,8 @@ export const site = {
     "We research the battlefield, find the leverage, and keep pressure on your competitors with websites, SEO, ads, CRM, and constant optimization.",
   defaultOgImage: "/assets/motion-logo.png",
   address: {
+    locality: "St. Petersburg",
+    region: "FL",
     country: "US",
   },
   sameAs: [] as string[],
