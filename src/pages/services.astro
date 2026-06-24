@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import { serviceCategories, serviceFinder } from "../data/services";
+import { breadcrumbSchema, serviceSchema } from "../data/schema";
+
+const schema = [
+  serviceSchema("Growth systems", "Websites, SEO, ads, reviews, CRM, analytics, and strategy built into one connected growth system.", "/services"),
+  breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Services", path: "/services" }]),
+];
+---
+
+<BaseLayout
+  title="Services - Growth Systems Built to Work Together"
+  description="Websites, SEO, ads, reviews, CRM, analytics, and strategy built into one connected growth system."
+  canonical="/services"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Services"
+    title="Growth services built to work together."
+    subtitle="Motion connects the pieces most agencies leave disconnected - website, search visibility, ads, reviews, CRM, follow-up, analytics, and strategy."
+    primary={{ label: "Find the Right Service", href: "#finder" }}
+    secondary={{ label: "Get Free Feedback", href: "/contact" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Categories" />
+    <div class="grid-3" style="margin-top: 2rem;">
+      {serviceCategories.map((category) => <ServiceCard number={category.number} title={category.title} items={category.items} />)}
+    </div>
+  </section>
+
+  <section id="finder" class="container-page section">
+    <SectionLabel number="02" label="Service finder" />
+    <h2 class="heading-section text-balance" style="max-width: 860px; margin-top: 2rem;">What are you trying to improve first?</h2>
+    <div class="grid-4" style="margin-top: 2rem;">
+      {serviceFinder.map((option) => <a class="surface-card card-pad" href={"/contact?priority=" + encodeURIComponent(option)}>{option}</a>)}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Not sure?"
+    title="Not sure what you need first? We'll show you."
+    body="The free feedback shows you the leaks, the opportunities, and what to fix in what order."
+  />
+</BaseLayout>
+

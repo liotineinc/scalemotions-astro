@@ -1,0 +1,46 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  robots?: string;
+  schema?: Record<string, unknown>[];
+}
+
+const {
+  title = site.defaultTitle,
+  description = site.defaultDescription,
+  canonical = Astro.url.pathname,
+  ogTitle,
+  ogDescription,
+  ogImage = site.defaultOgImage,
+  robots = "index,follow",
+  schema = [],
+} = Astro.props;
+
+const fullTitle = title.includes(site.name) ? title : title + " | " + site.name;
+const canonicalUrl = new URL(canonical, site.url).toString();
+const ogImageUrl = new URL(ogImage, site.url).toString();
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={ogTitle ?? fullTitle} />
+<meta property="og:description" content={ogDescription ?? description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={ogTitle ?? fullTitle} />
+<meta name="twitter:description" content={ogDescription ?? description} />
+<meta name="twitter:image" content={ogImageUrl} />
+{schema.map((entry) => <script type="application/ld+json" set:html={JSON.stringify(entry)} />)}
+

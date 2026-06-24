@@ -1,0 +1,30 @@
+---
+interface LegalSection {
+  title: string;
+  body: readonly string[];
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  sections: readonly LegalSection[];
+}
+
+const { eyebrow, title, intro, sections } = Astro.props;
+---
+
+<article class="container-page section legal-page">
+  <p class="micro label-eyebrow">{eyebrow}</p>
+  <h1 class="heading-xl text-balance">{title}</h1>
+  <p class="hero-body text-pretty">{intro}</p>
+  <div style="margin-top: 3rem;">
+    {sections.map((section) => (
+      <section class="legal-section">
+        <h2 class="heading-tight" style="font-size: clamp(1.6rem, 3vw, 2.4rem);">{section.title}</h2>
+        {section.body.map((paragraph) => <p>{paragraph}</p>)}
+      </section>
+    ))}
+  </div>
+</article>
+

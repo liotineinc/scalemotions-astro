@@ -1,0 +1,17 @@
+---
+description: Project rules for the ScaleMotions Astro marketing site
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+- This is a production Astro source project, not a Webflow upload package.
+- Preserve SEO metadata, schema, and accessible heading hierarchy on every page.
+- Put reusable copy and business data in src/data.
+- Put repeated UI in src/components.
+- Keep global design decisions in src/styles/tokens.css and src/styles/global.css.
+- Never hardcode local machine paths.
+- Do not add fake form handlers. Forms must point to a real GoHighLevel, Formspree, Netlify, or Worker endpoint when wired.
+- Do not reintroduce Cloudflare Worker server logic into the static Astro site.
+- Run npm run build before finalizing edits.
+

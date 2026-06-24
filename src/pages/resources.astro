@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import { resourceCategories, resources } from "../data/resources";
+import { breadcrumbSchema } from "../data/schema";
+
+const schema = [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Resources", path: "/resources" }])];
+---
+
+<BaseLayout
+  title="Resources - Growth Insights for Business Owners"
+  description="Guides, tips, statistics, and terms for business owners who want better marketing decisions."
+  canonical="/resources"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Resources"
+    title="Growth resources for business owners who want better marketing decisions."
+    subtitle="Learn how websites, Google, ads, SEO, AI search, reviews, CRM, and analytics work together to drive measurable growth."
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Knowledge hub" />
+    <div class="tag-list" style="margin-top: 1.5rem;">
+      {resourceCategories.map((category) => <span class="tag micro">#{category}</span>)}
+    </div>
+    <div class="grid-3" style="margin-top: 2rem;">
+      {resources.map((resource) => (
+        <article class="surface-card card-pad">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;">
+            <p class="micro label-eyebrow">{resource.category}</p>
+            <span class="form-note">{resource.readTime}</span>
+          </div>
+          <h2 class="heading-tight" style="font-size: clamp(1.5rem, 2.4vw, 2.1rem); margin-top: 0.8rem;">{resource.title}</h2>
+          <p class="text-muted text-pretty">{resource.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Lead magnet"
+    title="Want us to find the gaps in your marketing?"
+    body="The free feedback reviews your website, visibility, competitors, ads, and follow-up - and shows you what to fix first."
+  />
+</BaseLayout>
+

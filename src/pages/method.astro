@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import { methodSteps } from "../data/method";
+import { breadcrumbSchema, serviceSchema } from "../data/schema";
+
+const schema = [
+  serviceSchema("Growth method", "A structured process to diagnose the real problem, prioritize fast impact, and continuously optimize.", "/method"),
+  breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Method", path: "/method" }]),
+];
+---
+
+<BaseLayout
+  title="Method - How Motion Turns Marketing Into Growth"
+  description="Motion's structured method: interview, research, consultation, onboarding, implementation, and optimization."
+  canonical="/method"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="The Method"
+    title="A clear method for turning marketing into measurable growth."
+    subtitle="Motion follows a structured process - diagnose the real problem, prioritize the fastest path to impact, implement the right system, and optimize around live data."
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+    secondary={{ label: "Talk With the Team", href: "/contact" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Process timeline" />
+    <div style="display: grid; gap: 1rem; margin-top: 2rem;">
+      {methodSteps.map((step, index) => (
+        <article class="surface-card card-pad grid-2" style="align-items: start;">
+          <div>
+            <p class="micro label-eyebrow">0{index + 1}/</p>
+            <h2 class="heading-tight" style="font-size: clamp(2rem, 4vw, 3.4rem); margin-top: 0.5rem;">{step.title}</h2>
+          </div>
+          <p class="hero-body text-pretty" style="margin-top: 0;">{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Start with feedback"
+    title="Want to see what we'd prioritize first for your business?"
+    body="Send us your website or Google Business Profile. We'll show you the leaks, the opportunities, and the order of operations."
+    primary={{ label: "Start With Free Feedback", href: "/contact" }}
+    secondary={{ label: "Speak With a Consultant", href: "/contact" }}
+  />
+</BaseLayout>
+

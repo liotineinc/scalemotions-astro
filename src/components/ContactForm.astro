@@ -1,0 +1,80 @@
+---
+import { auditQuestions, type EntryIntent } from "../data/home";
+
+interface Props {
+  intent?: EntryIntent;
+  heading?: string;
+  compact?: boolean;
+  source?: string;
+}
+
+const {
+  intent = "diagnostic",
+  heading = "Start with free feedback",
+  compact = false,
+  source = "website",
+} = Astro.props;
+
+const question = auditQuestions[intent];
+---
+
+<form class:list={["audit-shell contact-form", compact && "audit-shell-hero"]} method="post" action="" name="free-feedback">
+  <!-- Integration note: connect this form action to GoHighLevel, Formspree, Netlify Forms, or a Cloudflare Worker endpoint. Phone is intentionally omitted while SMS opt-in is handled by the LeadConnector chat widget. -->
+  <input type="hidden" name="source" value={source} />
+  <div>
+    <p class="micro label-eyebrow">Free Feedback</p>
+    <h2 class="heading-tight text-balance" style="font-size: clamp(1.8rem, 4vw, 3.1rem); margin-top: 0.45rem;">{heading}</h2>
+    <p class="form-note" style="margin-top: 0.75rem;">
+      Takes about 90 seconds. We don't sell your info. We don't double-dip in your market.
+    </p>
+  </div>
+
+  <fieldset class="form-step">
+    <legend class="micro">{question.question}</legend>
+    <div class="choice-grid">
+      {question.options.map((option) => (
+        <label class="choice-option">
+          <input type="radio" name="priority" value={option} required />
+          <span>{option}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="form-step">
+    <label class="micro" for={"website-" + source}>Website or Google Business Profile</label>
+    <input class="field" id={"website-" + source} name="website_or_profile" type="url" inputmode="url" placeholder="https://yourwebsite.com" required />
+  </div>
+
+  <div class="field-grid">
+    <div class="form-step">
+      <label class="micro" for={"industry-" + source}>Industry</label>
+      <input class="field" id={"industry-" + source} name="industry" type="text" placeholder="HVAC, roofing, legal..." required />
+    </div>
+    <div class="form-step">
+      <label class="micro" for={"market-" + source}>City / Market</label>
+      <input class="field" id={"market-" + source} name="market" type="text" placeholder="Dallas, Tampa, Phoenix..." required />
+    </div>
+  </div>
+
+  <div class="field-grid">
+    <div class="form-step">
+      <label class="micro" for={"name-" + source}>Name</label>
+      <input class="field" id={"name-" + source} name="name" type="text" autocomplete="name" required />
+    </div>
+    <div class="form-step">
+      <label class="micro" for={"email-" + source}>Email</label>
+      <input class="field" id={"email-" + source} name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+
+  {!compact && (
+    <div class="form-step">
+      <label class="micro" for={"challenge-" + source}>What should we know?</label>
+      <textarea class="textarea" id={"challenge-" + source} name="challenge" placeholder="Tell us where the market fight is hardest right now."></textarea>
+    </div>
+  )}
+
+  <button class="primary-pill" type="submit">Get Free Feedback</button>
+</form>
+

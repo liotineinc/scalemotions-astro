@@ -1,0 +1,208 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ContactForm from "../components/ContactForm.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import MediaSlot from "../components/MediaSlot.astro";
+import MarketChart from "../components/MarketChart.astro";
+import { homeContent } from "../data/home";
+import { breadcrumbSchema, faqSchema, localBusinessSchema, organizationSchema, serviceSchema, websiteSchema } from "../data/schema";
+
+const schema = [
+  organizationSchema(),
+  localBusinessSchema(),
+  websiteSchema(),
+  serviceSchema(),
+  faqSchema(homeContent.faq.items),
+  breadcrumbSchema([{ name: "Home", path: "/" }]),
+];
+---
+
+<BaseLayout
+  title="Performance Marketing for Established SMBs"
+  description="Motion researches your market, scans competitors, finds top locations and high-intent keywords, then builds the website, search, ads, CRM, and conversion system to compete."
+  canonical="/"
+  schema={schema}
+>
+  <Hero
+    eyebrow={homeContent.hero.eyebrow}
+    title={homeContent.hero.headline}
+    kicker={homeContent.hero.kicker}
+    body={homeContent.hero.body}
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+    secondary={{ label: "See the system", href: "#system" }}
+  >
+    <ContactForm compact intent="hero" source="hero" heading="Where are they beating you?" />
+  </Hero>
+
+  <section class="container-page section-tight">
+    <div class="grid-4">
+      {homeContent.trust.map((item) => <div class="surface-card card-pad micro">{item}</div>)}
+    </div>
+  </section>
+
+  <section id="pain" class="container-page section">
+    <SectionLabel number="01" label="Pain mirror" />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.pain.headline}</h2>
+    <div class="grid-4" style="margin-top: 2rem;">
+      {homeContent.pain.cards.map(([title, body]) => (
+        <article class="surface-card card-pad">
+          <p class="micro label-eyebrow">Root cause</p>
+          <h3 class="heading-tight" style="font-size: clamp(1.55rem, 2.3vw, 2.25rem); margin-top: 0.8rem;">{title}</h3>
+          <p class="text-muted text-pretty">{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="system" class="container-page section">
+    <SectionLabel number="02" label="Five principles" />
+    <div class="grid-2" style="align-items: end; margin-top: 2rem;">
+      <h2 class="heading-section text-balance">{homeContent.principles.headline}</h2>
+      <MediaSlot label="Precision process graphic" />
+    </div>
+    <div class="grid-4" style="margin-top: 1rem;">
+      {homeContent.principles.items.map((item, index) => (
+        <article class="surface-card card-pad">
+          <p class="micro label-eyebrow">0{index + 1}</p>
+          <h3 class="heading-tight" style="font-size: clamp(1.5rem, 2.3vw, 2.2rem); margin-top: 0.8rem;">{item}</h3>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="03" label="Market reframe" />
+    <div class="grid-2" style="align-items: start; margin-top: 2rem;">
+      <div>
+        <h2 class="heading-section text-balance">{homeContent.market.headline}</h2>
+        <p class="hero-body text-pretty">{homeContent.market.body}</p>
+      </div>
+      <MarketChart bars={homeContent.market.bars} />
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="04" label="Services" />
+    <h2 class="heading-section text-balance" style="max-width: 960px; margin-top: 2rem;">{homeContent.services.headline}</h2>
+    <div class="grid-3" style="margin-top: 2rem;">
+      {homeContent.services.columns.map(([title, items], index) => <ServiceCard number={"0" + (index + 1)} title={title} items={items} />)}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="05" label="90-day sequence" />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.sequence.headline}</h2>
+    <div class="timeline" style="margin-top: 2rem;">
+      {homeContent.sequence.phases.map(([period, title, body]) => (
+        <article class="timeline-card">
+          <p class="micro label-eyebrow">{period}</p>
+          <h3 class="heading-tight" style="font-size: clamp(1.7rem, 3vw, 2.5rem); margin-top: 1rem;">{title}</h3>
+          <p class="text-muted text-pretty">{body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="proof" class="container-page section">
+    <SectionLabel number="06" label="Proof" />
+    <div class="grid-2" style="align-items: start; margin-top: 2rem;">
+      <div>
+        <h2 class="heading-section text-balance">{homeContent.proof.headline}</h2>
+        <div class="grid-2" style="margin-top: 2rem;">
+          {homeContent.proof.stats.map((stat) => <div class="surface-card card-pad micro">{stat}</div>)}
+        </div>
+      </div>
+      <div class="grid-1" style="display: grid; gap: 1rem;">
+        <MediaSlot label="Client video testimonial" />
+        {homeContent.proof.cases.map((caseStudy) => <div class="surface-card card-pad text-muted">{caseStudy}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Proof check"
+    title="Want to see where your competitors are exposed?"
+    body="Start with free feedback. We'll review your site, visibility, market, keywords, and conversion path before recommending what to build."
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+    secondary={{ label: "View testimonials", href: "/testimonials" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="07" label="Risk reversal" />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.risk.headline}</h2>
+    <div class="grid-3" style="margin-top: 2rem;">
+      {homeContent.risk.tiles.map((tile) => <div class="surface-card card-pad micro">{tile}</div>)}
+    </div>
+    <div class="surface-elevated card-pad" style="margin-top: 1rem;">
+      <p class="text-muted text-pretty">{homeContent.risk.offboarding}</p>
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="08" label="Not for everyone" />
+    <div class="surface-elevated card-pad">
+      <h2 class="heading-section text-balance">{homeContent.disqualifier.headline}</h2>
+      <p class="hero-body text-pretty">{homeContent.disqualifier.body}</p>
+    </div>
+  </section>
+
+  <section id="free-feedback" class="container-page section">
+    <SectionLabel number="09" label="Free Feedback" />
+    <div class="grid-2" style="align-items: start; margin-top: 2rem;">
+      <div>
+        <h2 class="heading-section text-balance">{homeContent.audit.headline}</h2>
+        <p class="hero-body text-pretty">{homeContent.audit.body}</p>
+        <MediaSlot label="Sample free feedback deliverable" />
+      </div>
+      <ContactForm intent="audit" source="homepage-free-feedback" />
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="10" label="FAQ" />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.faq.headline}</h2>
+    <div style="display: grid; gap: 1rem; margin-top: 2rem;">
+      {homeContent.faq.items.map(([question, answer]) => (
+        <details class="surface-card card-pad">
+          <summary class="heading-tight" style="font-size: clamp(1.25rem, 2vw, 1.8rem); cursor: pointer;">{question}</summary>
+          <p class="text-muted text-pretty">{answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow={homeContent.final.label}
+    title={homeContent.final.headline}
+    body={homeContent.final.body}
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+  />
+
+  <section id="partners" class="container-page section">
+    <SectionLabel number="12" label="Partner referrals" />
+    <div class="grid-2" style="margin-top: 2rem;">
+      {homeContent.partners.map(([label, partner, body, cta]) => (
+        <article class="surface-card card-pad">
+          <p class="micro label-eyebrow">{label}</p>
+          <h2 class="heading-tight" style="font-size: clamp(1.8rem, 4vw, 3rem); margin-top: 0.8rem;">{partner}</h2>
+          <p class="text-muted text-pretty">{body}</p>
+          <form class="contact-form" method="post" action="" style="margin-top: 1.25rem;">
+            <!-- Integration note: connect partner referrals to GoHighLevel, Formspree, Netlify Forms, or a Cloudflare Worker endpoint. -->
+            <input class="field" name="name" placeholder="Name" autocomplete="name" required />
+            <input class="field" name="email" type="email" placeholder="Email" autocomplete="email" required />
+            <input class="field" name="business" placeholder="Business name" required />
+            <button class="outline-pill" type="submit">{cta}</button>
+          </form>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <div class="sticky-cta">
+    <a class="primary-pill" href="/contact">Get Free Feedback</a>
+  </div>
+</BaseLayout>
+

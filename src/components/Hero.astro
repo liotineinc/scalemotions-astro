@@ -1,0 +1,38 @@
+---
+interface CTA {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  kicker?: string;
+  subtitle?: string;
+  body?: string;
+  primary?: CTA;
+  secondary?: CTA;
+  compact?: boolean;
+}
+
+const { eyebrow, title, kicker, subtitle, body, primary, secondary, compact = false } = Astro.props;
+---
+
+<section class:list={["hero", "section-grid", compact && "hero-compact"]}>
+  <div class="container-page hero-inner">
+    <div class="hero-copy">
+      <p class="micro label-eyebrow">{eyebrow}</p>
+      <h1 class={compact ? "heading-xl text-balance" : "heading-massive text-balance"}>{title}</h1>
+      {kicker && <p class="hero-kicker text-pretty">{kicker}</p>}
+      {(subtitle || body) && <p class="hero-body text-pretty">{subtitle ?? body}</p>}
+      {(primary || secondary) && (
+        <div class="hero-actions">
+          {primary && <a class="primary-pill" href={primary.href}>{primary.label}</a>}
+          {secondary && <a class="outline-pill" href={secondary.href}>{secondary.label}</a>}
+        </div>
+      )}
+    </div>
+    <slot />
+  </div>
+</section>
+

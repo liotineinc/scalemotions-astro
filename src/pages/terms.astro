@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalContent from "../components/LegalContent.astro";
+import { termsContent } from "../data/legal";
+import { breadcrumbSchema, organizationSchema } from "../data/schema";
+
+const schema = [organizationSchema(), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Terms", path: "/terms" }])];
+---
+
+<BaseLayout
+  title="Terms & Messaging Terms - SCALE MOTION"
+  description="Terms and SMS messaging terms for SCALE MOTION, including customer-care messages, opt-in, STOP, HELP, and mobile-data sharing disclosures."
+  canonical="/terms"
+  schema={schema}
+>
+  <LegalContent {...termsContent} />
+</BaseLayout>
+

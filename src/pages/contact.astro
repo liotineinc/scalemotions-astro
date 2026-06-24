@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ContactForm from "../components/ContactForm.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import { breadcrumbSchema } from "../data/schema";
+
+const benefits = [
+  "Website review",
+  "Google Business Profile review",
+  "SEO / AEO visibility review",
+  "Competitor gap analysis",
+  "Ads opportunity review",
+  "Audience insight",
+  "Prioritized action plan",
+];
+
+const schema = [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact" }])];
+---
+
+<BaseLayout
+  title="Free Feedback"
+  description="Request free feedback. We'll review your website, visibility, competitors, and growth opportunities."
+  canonical="/contact"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Free Feedback"
+    title="Start with your website or Google Business Profile."
+    subtitle="Tell us where you want to grow. We'll review your visibility, conversion path, competition, and opportunities - then show you what to fix first."
+  />
+
+  <section class="container-page section">
+    <div class="grid-2" style="align-items: start;">
+      <div>
+        <SectionLabel number="01" label="What you'll get" />
+        <h2 class="heading-section text-balance" style="margin-top: 2rem;">A sharper view of what to fix before you go faster.</h2>
+        <ul style="display: grid; gap: 0.8rem; margin-top: 2rem; padding-left: 1rem;">
+          {benefits.map((benefit) => <li>{benefit}</li>)}
+        </ul>
+        <div class="surface-card card-pad" style="margin-top: 2rem;">
+          <p class="micro label-eyebrow">Direct access</p>
+          <p class="text-muted text-pretty">You'll speak directly with the team doing the work. No outsourced layers. No hostage accounts. No long-term handcuffs.</p>
+        </div>
+      </div>
+      <ContactForm intent="diagnostic" source="contact" />
+    </div>
+  </section>
+</BaseLayout>
+

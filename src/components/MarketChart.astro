@@ -1,0 +1,24 @@
+---
+interface Props {
+  bars: readonly (readonly [string, string, number, string])[];
+}
+
+const { bars } = Astro.props;
+const colors = ["#8c9280", "#6e765c", "#5f6f3d", "#26331f"];
+---
+
+<div class="chart-list" aria-label="Click distribution opportunities">
+  {bars.map(([label, range, value, description], index) => (
+    <article class="chart-row">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;">
+        <h3 class="heading-tight" style="font-size: 1.35rem;">{label}</h3>
+        <span class="micro label-eyebrow">{range}</span>
+      </div>
+      <div class="chart-bar-track" aria-hidden="true">
+        <div class="chart-bar" style={"--bar: " + value + "%; --bar-color: " + colors[index] + ";"}></div>
+      </div>
+      <p class="text-muted text-pretty" style="margin: 0;">{description}</p>
+    </article>
+  ))}
+</div>
+

@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LegalContent from "../components/LegalContent.astro";
+import { privacyContent } from "../data/legal";
+import { breadcrumbSchema, organizationSchema } from "../data/schema";
+
+const schema = [organizationSchema(), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Privacy Policy", path: "/privacy-policy" }])];
+---
+
+<BaseLayout
+  title="Privacy Policy - SCALE MOTION"
+  description="Privacy Policy for SCALE MOTION covering website inquiries, chat, SMS consent, Google Ads API data, analytics, storage, sharing, and user choices."
+  canonical="/privacy-policy"
+  schema={schema}
+>
+  <LegalContent {...privacyContent} />
+</BaseLayout>
+

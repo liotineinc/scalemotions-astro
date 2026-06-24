@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import MediaSlot from "../components/MediaSlot.astro";
+import { portfolioFilters, portfolioProjects } from "../data/portfolio";
+import { breadcrumbSchema } from "../data/schema";
+
+const schema = [breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }])];
+---
+
+<BaseLayout
+  title="Portfolio - Websites and Growth Systems Built to Convert"
+  description="Example builds of conversion-focused websites, landing pages, dashboards, and growth infrastructure."
+  canonical="/portfolio"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Portfolio"
+    title="Websites and growth systems built to convert."
+    subtitle="Explore examples of conversion-focused websites, landing pages, dashboards, search visibility systems, and growth infrastructure."
+    primary={{ label: "Request Free Feedback", href: "/contact" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Filter reference" />
+    <div class="tag-list" style="margin-top: 1.5rem;">
+      {portfolioFilters.map((filter) => <span class="tag micro">#{filter}</span>)}
+    </div>
+    <div class="grid-3" style="margin-top: 2rem;">
+      {portfolioProjects.map((project) => (
+        <article class="surface-card card-pad">
+          <MediaSlot label={project.industry} aspect="4 / 3" />
+          <p class="micro label-eyebrow" style="margin-top: 1rem;">{project.category}</p>
+          <h2 class="heading-tight" style="font-size: clamp(1.5rem, 2.4vw, 2.15rem); margin-top: 0.6rem;">{project.title}</h2>
+          <p class="text-muted">Problem: {project.problem}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="02" label="Featured" />
+    <div class="surface-elevated card-pad grid-2" style="align-items: center; margin-top: 2rem;">
+      <MediaSlot label="Example case study" />
+      <div>
+        <p class="micro label-eyebrow">Example case study</p>
+        <h2 class="heading-tight text-balance" style="font-size: clamp(2rem, 5vw, 4rem); margin-top: 0.75rem;">Example Growth System Buildout</h2>
+        <dl>
+          <dt class="micro label-eyebrow">Challenge</dt>
+          <dd class="text-muted">Disconnected website, traffic, CRM, follow-up, and reporting.</dd>
+          <dt class="micro label-eyebrow">Strategy</dt>
+          <dd class="text-muted">Website rebuild, Google visibility, ads, SEO/AEO, CRM, reviews, analytics.</dd>
+          <dt class="micro label-eyebrow">Outcome</dt>
+          <dd class="text-muted">Replace with verified client data before publishing.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Build with us"
+    title="Want to see what we'd build for your business?"
+    body="The free feedback shows you exactly where your site, visibility, and follow-up could be improved - and what to prioritize first."
+  />
+</BaseLayout>
+

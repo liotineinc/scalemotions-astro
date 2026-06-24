@@ -1,0 +1,24 @@
+---
+interface Props {
+  number?: string;
+  title: string;
+  items?: readonly string[];
+  body?: string;
+  href?: string;
+}
+
+const { number, title, items = [], body, href } = Astro.props;
+---
+
+<article class="surface-card card-pad" style="height: 100%;">
+  {number && <p class="micro label-eyebrow">/{number}</p>}
+  <h3 class="heading-tight text-balance" style="font-size: clamp(1.7rem, 3vw, 2.35rem); margin-top: 0.75rem;">{title}</h3>
+  {body && <p class="text-muted text-pretty" style="margin-top: 0.85rem;">{body}</p>}
+  {items.length > 0 && (
+    <ul style="display: grid; gap: 0.7rem; margin: 1.3rem 0 0; padding: 0; list-style: none;">
+      {items.map((item) => <li class="text-muted" style="display: flex; justify-content: space-between; gap: 1rem;">{item}<span aria-hidden="true">→</span></li>)}
+    </ul>
+  )}
+  {href && <a class="soft-pill" style="margin-top: 1.5rem;" href={href}>See approach</a>}
+</article>
+

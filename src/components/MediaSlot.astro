@@ -1,0 +1,13 @@
+---
+interface Props {
+  label: string;
+  aspect?: string;
+}
+
+const { label, aspect = "16 / 9" } = Astro.props;
+---
+
+<div class="media-slot" style={"aspect-ratio: " + aspect + ";"}>
+  <span class="media-caption micro">{label}</span>
+</div>
+

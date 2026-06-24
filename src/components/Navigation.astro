@@ -1,0 +1,26 @@
+---
+import { navigationLinks } from "../data/navigation";
+---
+
+<header class="site-header">
+  <div class="container-page nav-shell">
+    <a class="brand-mark" href="/" aria-label="Motion home">
+      <img src="/assets/motion-logo.gif" alt="Motion" width="240" height="68" decoding="async" />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {navigationLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <a class="primary-pill header-cta" href="/contact">Get Free Feedback</a>
+
+    <details class="mobile-menu">
+      <summary class="outline-pill" aria-label="Open navigation">Menu</summary>
+      <nav class="mobile-menu-panel" aria-label="Mobile navigation">
+        {navigationLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+        <a class="primary-pill" href="/contact">Get Free Feedback</a>
+      </nav>
+    </details>
+  </div>
+</header>
+

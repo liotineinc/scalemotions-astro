@@ -1,0 +1,29 @@
+---
+import { footerLinks } from "../data/navigation";
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="container-page footer-grid">
+    <div>
+      <a class="brand-mark" href="/" aria-label="Motion home">
+        <img src="/assets/motion-logo.png" alt="Motion" width="240" height="68" loading="lazy" decoding="async" />
+      </a>
+      <p class="text-muted text-pretty" style="max-width: 620px; margin-top: 1rem;">
+        Performance marketing for established SMBs that need market research, visibility, conversion, follow-up, and constant optimization.
+      </p>
+      <p class="form-note" style="max-width: 760px; margin-top: 1rem;">
+        SMS/customer-care messages are handled through the SCALE MOTION chat widget with opt-in language. Mobile information, opt-in data, and consent are not shared for third-party marketing.
+      </p>
+    </div>
+    <div>
+      <div class="footer-links">
+        {footerLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+      </div>
+      <p class="form-note" style="margin-top: 1.5rem;">
+        {site.legalName} · {site.contactEmail}
+      </p>
+    </div>
+  </div>
+</footer>
+

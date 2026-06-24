@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import { pricingAddons, pricingPackages } from "../data/pricing";
+import { breadcrumbSchema, serviceSchema } from "../data/schema";
+
+const schema = [
+  serviceSchema("Performance marketing pricing", "Pricing depends on goals, market, current assets, timeline, and service mix.", "/pricing"),
+  breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Pricing", path: "/pricing" }]),
+];
+---
+
+<BaseLayout
+  title="Pricing - Built Around the Work Required to Grow Properly"
+  description="Pricing depends on goals, market, and service mix. Free feedback determines the smartest starting point."
+  canonical="/pricing"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Pricing"
+    title="Pricing built around the work required to grow properly."
+    subtitle="Motion is not the cheapest option - and it's not designed to be. We build serious growth systems for businesses that want strategy, execution, transparency, and measurable improvement."
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Philosophy" />
+    <p class="hero-body text-pretty" style="max-width: 920px;">Pricing depends on goals, market, competition, current assets, timeline, and service mix. Some businesses need a website first. Some need ads first. Some need SEO/Maps first. Some need CRM/follow-up first. Free feedback determines the smartest starting point.</p>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="02" label="Packages" />
+    <div class="grid-4" style="margin-top: 2rem;">
+      {pricingPackages.map((pack, index) => (
+        <article class:list={["card-pad", pack.featured ? "surface-elevated" : "surface-card"]}>
+          <p class="micro label-eyebrow">/0{index + 1}</p>
+          <h2 class="heading-tight" style="font-size: clamp(1.5rem, 2.4vw, 2.2rem); margin-top: 0.75rem;">{pack.title}</h2>
+          <p class="text-muted">{pack.bestFor}</p>
+          <ul style="display: grid; gap: 0.65rem; padding-left: 1rem;">
+            {pack.items.map((item) => <li>{item}</li>)}
+          </ul>
+          <a class={pack.featured ? "primary-pill" : "outline-pill"} href="/contact" style="width: 100%; margin-top: 1rem;">Start with feedback</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="03" label="Add-ons" />
+    <div class="grid-3" style="margin-top: 2rem;">
+      {pricingAddons.map((addon) => <div class="surface-card card-pad">{addon}</div>)}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="04" label="Fit" />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">We may not be the right fit if you're only looking for the cheapest vendor.</h2>
+    <p class="hero-body text-pretty">Motion is for businesses looking to build a platform that can generate ROI in multiples over time - not a $99/month placeholder.</p>
+  </section>
+
+  <CTASection
+    eyebrow="Start with feedback"
+    title="The first step is finding out what you actually need."
+    body="Send us your website or Google Business Profile. We'll show you the leaks, the opportunities, and what to fix first."
+  />
+</BaseLayout>
+

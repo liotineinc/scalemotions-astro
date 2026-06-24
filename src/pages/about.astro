@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import MediaSlot from "../components/MediaSlot.astro";
+import { beliefs, differentiators, teamRoles } from "../data/about";
+import { breadcrumbSchema, organizationSchema } from "../data/schema";
+
+const schema = [organizationSchema(), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])];
+---
+
+<BaseLayout
+  title="About - Built for Business Owners Tired of Guesswork"
+  description="Motion was created to give serious businesses a smarter, more transparent way to build marketing infrastructure."
+  canonical="/about"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="About"
+    title="Built for business owners tired of guesswork, generic agencies, and hidden reports."
+    subtitle="Motion was created to give serious businesses a smarter, more transparent way to build marketing infrastructure that actually supports growth."
+    primary={{ label: "Get Free Feedback", href: "/contact" }}
+  >
+    <MediaSlot label="Founder photo" aspect="4 / 5" />
+  </Hero>
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Mission" />
+    <div class="grid-2" style="align-items: start; margin-top: 2rem;">
+      <h2 class="heading-section text-balance">Build marketing systems that create measurable business growth.</h2>
+      <p class="hero-body text-pretty">Give owners clarity. Protect ownership. Use strategy before tactics. Help businesses scale with better infrastructure - not louder ads.</p>
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="02" label="What we believe" />
+    <div class="grid-2" style="margin-top: 2rem;">
+      {beliefs.map((belief) => <div class="surface-card card-pad">{belief}</div>)}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="03" label="Team" />
+    <div class="grid-3" style="margin-top: 2rem;">
+      {teamRoles.map((role) => (
+        <article class="surface-card card-pad">
+          <MediaSlot label="Team placeholder" aspect="4 / 5" />
+          <h3 class="heading-tight" style="font-size: 1.5rem; margin-top: 1rem;">{role}</h3>
+        </article>
+      ))}
+    </div>
+    <p class="text-muted" style="margin-top: 1.5rem;">Direct access to the people doing the work.</p>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="04" label="Why we're different" />
+    <div class="grid-3" style="margin-top: 2rem;">
+      {differentiators.map((item) => <div class="surface-card card-pad micro">{item}</div>)}
+    </div>
+  </section>
+
+  <CTASection
+    eyebrow="Work together"
+    title="Want to see how we'd approach your business?"
+    body="The free feedback shows you the leaks, the opportunities, and the priority order - built around what you actually need first."
+  />
+</BaseLayout>
+

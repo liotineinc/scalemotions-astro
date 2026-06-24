@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CTASection from "../components/CTASection.astro";
+import SectionLabel from "../components/SectionLabel.astro";
+import { industries } from "../data/industries";
+import { breadcrumbSchema, serviceSchema } from "../data/schema";
+
+const schema = [
+  serviceSchema("Performance marketing for service businesses", "Growth systems for service-based businesses that depend on trust, visibility, and calls.", "/industries"),
+  breadcrumbSchema([{ name: "Home", path: "/" }, { name: "Industries", path: "/industries" }]),
+];
+---
+
+<BaseLayout
+  title="Industries - Growth Systems for Service-Based Businesses"
+  description="Motion serves home services, HVAC, roofing, medical, legal, and B2B businesses that depend on trust, visibility, and calls."
+  canonical="/industries"
+  schema={schema}
+>
+  <Hero
+    compact
+    eyebrow="Industries"
+    title="Growth systems for service-based businesses that depend on trust, visibility, and calls."
+    subtitle="Motion helps local and service-based businesses improve search visibility, lead quality, website conversion, reviews, follow-up, and marketing ROI."
+    primary={{ label: "Request a Competitor Gap Analysis", href: "/contact" }}
+  />
+
+  <section class="container-page section">
+    <SectionLabel number="01" label="Industries served" />
+    <div class="grid-3" style="margin-top: 2rem;">
+      {industries.map((industry) => (
+        <article class="surface-card card-pad">
+          <p class="micro label-eyebrow">Market</p>
+          <h2 class="heading-tight" style="font-size: clamp(1.5rem, 2.5vw, 2.2rem); margin-top: 0.75rem;">{industry.title}</h2>
+          <p class="text-muted"><strong>Pain:</strong> {industry.pain}</p>
+          <p class="text-muted"><strong>Fix:</strong> {industry.fix}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page section">
+    <SectionLabel number="02" label="Funnel strategy" />
+    <h2 class="heading-section text-balance" style="max-width: 880px; margin-top: 2rem;">Different industries need different growth strategies.</h2>
+    <p class="hero-body text-pretty">Each vertical has different keywords, buying behavior, sales cycles, urgency, competition, and conversion paths. We build the system around your market - not a template.</p>
+  </section>
+
+  <CTASection
+    eyebrow="Market intel"
+    title="Want to know what's working in your market?"
+    body="We'll review your competitors' visibility, ads, content, and conversion approach - and map a path to outperform them."
+  />
+</BaseLayout>
+
