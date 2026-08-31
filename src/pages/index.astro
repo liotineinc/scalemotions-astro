@@ -13,15 +13,22 @@ const schema = [
   organizationSchema(),
   localBusinessSchema(),
   websiteSchema(),
-  serviceSchema(),
+  serviceSchema(
+    "Lost Website Recovery",
+    "Recovery of expired or lapsed domains, DNS, hosting, site files, databases, and business email, restored or rebuilt from backups and archives and transferred to accounts the business owns.",
+  ),
+  serviceSchema(
+    "Google Business Profile Recovery, Verification & Setup",
+    "Reinstatement of suspended Google Business Profiles with evidence packages, completion of failed verifications, ownership reclamation, duplicate listing cleanup, and correct new-profile setup.",
+  ),
   faqSchema(homeContent.faq.items),
   breadcrumbSchema([{ name: "Home", path: "/" }]),
 ];
 ---
 
 <BaseLayout
-  title="Performance Marketing for Established SMBs"
-  description="Scale Motion researches your market, scans competitors, finds top locations and high-intent keywords, then builds the website, search, ads, CRM, and conversion system to compete."
+  title="Website & Google Business Profile Recovery"
+  description="Scale Motion recovers lost websites, expired domains, and suspended or unverifiable Google Business Profiles, then secures everything in your name."
   canonical="/"
   schema={schema}
 >
