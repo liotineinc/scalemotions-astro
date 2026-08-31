@@ -225,9 +225,17 @@ select {
   position: sticky;
   top: 0;
   z-index: 60;
-  border-bottom: 1px solid var(--line);
-  background: rgb(var(--paper-rgb) / 0.82);
-  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgb(255 255 255 / 0.14);
+  background: var(--ink);
+}
+
+.site-header .primary-pill {
+  background: var(--accent-orange);
+  color: var(--ink);
+}
+
+.site-header .primary-pill:hover {
+  background: var(--accent-orange-hot);
 }
 
 .nav-shell {
@@ -250,51 +258,15 @@ select {
   height: auto;
 }
 
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.desktop-nav a,
-.footer-links a,
-.mobile-menu a {
+.footer-links a {
   color: var(--muted-ink);
   font-size: 0.82rem;
   font-weight: 800;
   transition: color var(--duration-fast) var(--ease-standard);
 }
 
-.desktop-nav a:hover,
-.footer-links a:hover,
-.mobile-menu a:hover {
+.footer-links a:hover {
   color: var(--ink);
-}
-
-.mobile-menu {
-  display: none;
-}
-
-.mobile-menu summary {
-  cursor: pointer;
-  list-style: none;
-}
-
-.mobile-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.mobile-menu-panel {
-  position: absolute;
-  inset-inline: 1.25rem;
-  top: calc(100% + 0.5rem);
-  display: grid;
-  gap: 1rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--paper);
-  padding: 1rem;
-  box-shadow: var(--shadow-card);
 }
 
 .hero {
@@ -655,13 +627,9 @@ select {
     background-image: linear-gradient(to right, transparent 0, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px));
   }
 
-  .desktop-nav,
   .site-header .header-cta {
-    display: none;
-  }
-
-  .mobile-menu {
-    display: block;
+    font-size: 0.72rem;
+    padding: 0.7rem 1rem;
   }
 
   .hero {

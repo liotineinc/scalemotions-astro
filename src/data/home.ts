@@ -271,7 +271,7 @@ export const homeContent = {
     body: "Show us what happened. You'll get a straight answer on what's recoverable, what the deadlines are, and what it takes to get your website and Google Business Profile back in your name.",
   },
   floatingCta: {
-    primary: { label: "Start Free Recovery Check", href: "/contact" },
+    primary: { label: "Start Free Recovery Check", href: "#free-feedback" },
     /** Mobile-only second pill, composed from the existing outline-pill variant. */
     call: { label: "Call", href: "tel:+18135000198" },
   },

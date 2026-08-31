@@ -43,7 +43,7 @@ export const websiteSchema = () => ({
   },
 });
 
-export const serviceSchema = (name = "Performance marketing", description = site.description, path = "/services") => ({
+export const serviceSchema = (name = "Performance marketing", description = site.description, path = "/") => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name,
