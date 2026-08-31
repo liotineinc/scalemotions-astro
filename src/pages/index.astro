@@ -6,23 +6,29 @@ import CTASection from "../components/CTASection.astro";
 import SectionLabel from "../components/SectionLabel.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import MediaSlot from "../components/MediaSlot.astro";
-import MarketChart from "../components/MarketChart.astro";
-import { homeContent } from "../data/home";
+import { bottomForm, heroForm, homeContent } from "../data/home";
 import { breadcrumbSchema, faqSchema, localBusinessSchema, organizationSchema, serviceSchema, websiteSchema } from "../data/schema";
 
 const schema = [
   organizationSchema(),
   localBusinessSchema(),
   websiteSchema(),
-  serviceSchema(),
+  serviceSchema(
+    "Lost Website Recovery",
+    "Recovery of expired or lapsed domains, DNS, hosting, site files, databases, and business email, restored or rebuilt from backups and archives and transferred to accounts the business owns.",
+  ),
+  serviceSchema(
+    "Google Business Profile Recovery, Verification & Setup",
+    "Reinstatement of suspended Google Business Profiles with evidence packages, completion of failed verifications, ownership reclamation, duplicate listing cleanup, and correct new-profile setup.",
+  ),
   faqSchema(homeContent.faq.items),
   breadcrumbSchema([{ name: "Home", path: "/" }]),
 ];
 ---
 
 <BaseLayout
-  title="Performance Marketing for Established SMBs"
-  description="Scale Motion researches your market, scans competitors, finds top locations and high-intent keywords, then builds the website, search, ads, CRM, and conversion system to compete."
+  title="Website & Google Business Profile Recovery"
+  description="Scale Motion recovers lost websites, expired domains, and suspended or unverifiable Google Business Profiles, then secures everything in your name."
   canonical="/"
   schema={schema}
 >
@@ -31,10 +37,11 @@ const schema = [
     title={homeContent.hero.headline}
     kicker={homeContent.hero.kicker}
     body={homeContent.hero.body}
-    primary={{ label: "Get Free Feedback", href: "/contact" }}
-    secondary={{ label: "See the system", href: "#system" }}
+    primary={homeContent.hero.primary}
+    secondary={homeContent.hero.secondary}
+    call={homeContent.hero.call}
   >
-    <ContactForm compact intent="hero" source="hero" heading="Where are they beating you?" />
+    <ContactForm compact intent="hero" source="hero" heading={heroForm.heading} variant={heroForm.variant} />
   </Hero>
 
   <section class="container-page section-tight">
@@ -44,105 +51,119 @@ const schema = [
   </section>
 
   <section id="pain" class="container-page section">
-    <SectionLabel number="01" label="Pain mirror" />
-    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.pain.headline}</h2>
+    <SectionLabel number="01" label={homeContent.lockout.label} />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.lockout.headline}</h2>
     <div class="grid-4" style="margin-top: 2rem;">
-      {homeContent.pain.cards.map(([title, body]) => (
+      {homeContent.lockout.cards.map((card) => (
         <article class="surface-card card-pad">
-          <p class="micro label-eyebrow">Root cause</p>
-          <h3 class="heading-tight" style="font-size: clamp(1.55rem, 2.3vw, 2.25rem); margin-top: 0.8rem;">{title}</h3>
-          <p class="text-muted text-pretty">{body}</p>
+          <p class="micro label-eyebrow">{homeContent.lockout.cardLabel}</p>
+          <h3 class="heading-tight" style="font-size: clamp(1.55rem, 2.3vw, 2.25rem); margin-top: 0.8rem;">{card.title}</h3>
+          <p class="text-muted text-pretty">{card.body}</p>
         </article>
       ))}
     </div>
   </section>
 
   <section id="system" class="container-page section">
-    <SectionLabel number="02" label="Five principles" />
+    <SectionLabel number="02" label={homeContent.rules.label} />
     <div class="grid-2" style="align-items: end; margin-top: 2rem;">
-      <h2 class="heading-section text-balance">{homeContent.principles.headline}</h2>
-      <MediaSlot label="Precision process graphic" />
+      <h2 class="heading-section text-balance">{homeContent.rules.headline}</h2>
+      <MediaSlot label={homeContent.rules.graphicLabel} />
     </div>
     <div class="grid-4" style="margin-top: 1rem;">
-      {homeContent.principles.items.map((item, index) => (
+      {homeContent.rules.steps.map((step, index) => (
         <article class="surface-card card-pad">
           <p class="micro label-eyebrow">0{index + 1}</p>
-          <h3 class="heading-tight" style="font-size: clamp(1.5rem, 2.3vw, 2.2rem); margin-top: 0.8rem;">{item}</h3>
+          <h3 class="heading-tight" style="font-size: clamp(1.5rem, 2.3vw, 2.2rem); margin-top: 0.8rem;">{step.title}</h3>
+          <p class="text-muted text-pretty">{step.body}</p>
         </article>
       ))}
     </div>
   </section>
 
   <section class="container-page section">
-    <SectionLabel number="03" label="Market reframe" />
+    <SectionLabel number="03" label={homeContent.recovery.label} />
     <div class="grid-2" style="align-items: start; margin-top: 2rem;">
       <div>
-        <h2 class="heading-section text-balance">{homeContent.market.headline}</h2>
-        <p class="hero-body text-pretty">{homeContent.market.body}</p>
+        <h2 class="heading-section text-balance">{homeContent.recovery.headline}</h2>
+        <p class="hero-body text-pretty">{homeContent.recovery.body}</p>
       </div>
-      <MarketChart bars={homeContent.market.bars} />
+      <div class="chart-list">
+        {homeContent.recovery.tiles.map((tile) => (
+          <article class="chart-row">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;">
+              <h3 class="heading-tight" style="font-size: 1.35rem;">{tile.title}</h3>
+              <span class="micro label-eyebrow">{tile.status}</span>
+            </div>
+            <p class="text-muted text-pretty" style="margin: 0;">{tile.body}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="container-page section">
-    <SectionLabel number="04" label="Services" />
+    <SectionLabel number="04" label={homeContent.services.label} />
     <h2 class="heading-section text-balance" style="max-width: 960px; margin-top: 2rem;">{homeContent.services.headline}</h2>
     <div class="grid-3" style="margin-top: 2rem;">
-      {homeContent.services.columns.map(([title, items], index) => <ServiceCard number={"0" + (index + 1)} title={title} items={items} />)}
+      {homeContent.services.columns.map((column, index) => (
+        <ServiceCard number={"0" + (index + 1)} title={column.title} body={"note" in column ? column.note : undefined} items={column.items} />
+      ))}
     </div>
   </section>
 
   <section class="container-page section">
-    <SectionLabel number="05" label="90-day sequence" />
+    <SectionLabel number="05" label={homeContent.sequence.label} />
     <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.sequence.headline}</h2>
     <div class="timeline" style="margin-top: 2rem;">
-      {homeContent.sequence.phases.map(([period, title, body]) => (
+      {homeContent.sequence.phases.map((phase) => (
         <article class="timeline-card">
-          <p class="micro label-eyebrow">{period}</p>
-          <h3 class="heading-tight" style="font-size: clamp(1.7rem, 3vw, 2.5rem); margin-top: 1rem;">{title}</h3>
-          <p class="text-muted text-pretty">{body}</p>
+          <p class="micro label-eyebrow">{phase.period}</p>
+          <h3 class="heading-tight" style="font-size: clamp(1.7rem, 3vw, 2.5rem); margin-top: 1rem;">{phase.title}</h3>
+          <p class="text-muted text-pretty">{phase.body}</p>
         </article>
       ))}
     </div>
+    <p class="form-note" style="margin-top: 1rem;">{homeContent.sequence.footnote}</p>
   </section>
 
   <section id="proof" class="container-page section">
-    <SectionLabel number="06" label="Proof" />
+    <SectionLabel number="06" label={homeContent.proof.label} />
     <div class="grid-2" style="align-items: start; margin-top: 2rem;">
       <div>
         <h2 class="heading-section text-balance">{homeContent.proof.headline}</h2>
         <div class="grid-2" style="margin-top: 2rem;">
-          {homeContent.proof.stats.map((stat) => <div class="surface-card card-pad micro">{stat}</div>)}
+          {homeContent.proof.screenshots.map((slot) => <div class="surface-card card-pad micro">{slot}</div>)}
         </div>
       </div>
       <div class="grid-1" style="display: grid; gap: 1rem;">
-        <MediaSlot label="Client video testimonial" />
+        <MediaSlot label={homeContent.proof.videoLabel} />
         {homeContent.proof.cases.map((caseStudy) => <div class="surface-card card-pad text-muted">{caseStudy}</div>)}
       </div>
     </div>
   </section>
 
   <CTASection
-    eyebrow="Proof check"
-    title="Want to see where your competitors are exposed?"
-    body="Start with free feedback. We'll review your site, visibility, market, keywords, and conversion path before recommending what to build."
-    primary={{ label: "Get Free Feedback", href: "/contact" }}
+    eyebrow={homeContent.proof.check.label}
+    title={homeContent.proof.check.headline}
+    body={homeContent.proof.check.body}
+    primary={{ label: "Start Free Recovery Check", href: "/contact" }}
     secondary={{ label: "View testimonials", href: "/testimonials" }}
   />
 
   <section class="container-page section">
-    <SectionLabel number="07" label="Risk reversal" />
-    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.risk.headline}</h2>
+    <SectionLabel number="07" label={homeContent.ownership.label} />
+    <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.ownership.headline}</h2>
     <div class="grid-3" style="margin-top: 2rem;">
-      {homeContent.risk.tiles.map((tile) => <div class="surface-card card-pad micro">{tile}</div>)}
+      {homeContent.ownership.pills.map((pill) => <div class="surface-card card-pad micro">{pill}</div>)}
     </div>
     <div class="surface-elevated card-pad" style="margin-top: 1rem;">
-      <p class="text-muted text-pretty">{homeContent.risk.offboarding}</p>
+      <p class="text-muted text-pretty">{homeContent.ownership.closing}</p>
     </div>
   </section>
 
   <section class="container-page section">
-    <SectionLabel number="08" label="Not for everyone" />
+    <SectionLabel number="08" label={homeContent.disqualifier.label} />
     <div class="surface-elevated card-pad">
       <h2 class="heading-section text-balance">{homeContent.disqualifier.headline}</h2>
       <p class="hero-body text-pretty">{homeContent.disqualifier.body}</p>
@@ -150,19 +171,19 @@ const schema = [
   </section>
 
   <section id="free-feedback" class="container-page section">
-    <SectionLabel number="09" label="Free Feedback" />
+    <SectionLabel number="09" label={homeContent.audit.label} />
     <div class="grid-2" style="align-items: start; margin-top: 2rem;">
       <div>
         <h2 class="heading-section text-balance">{homeContent.audit.headline}</h2>
         <p class="hero-body text-pretty">{homeContent.audit.body}</p>
-        <MediaSlot label="Sample free feedback deliverable" />
+        <MediaSlot label={homeContent.audit.deliverableLabel} />
       </div>
-      <ContactForm intent="audit" source="homepage-free-feedback" />
+      <ContactForm intent="audit" source="homepage-free-feedback" heading={bottomForm.heading} variant={bottomForm.variant} />
     </div>
   </section>
 
   <section class="container-page section">
-    <SectionLabel number="10" label="FAQ" />
+    <SectionLabel number="10" label={homeContent.faq.label} />
     <h2 class="heading-section text-balance" style="max-width: 980px; margin-top: 2rem;">{homeContent.faq.headline}</h2>
     <div style="display: grid; gap: 1rem; margin-top: 2rem;">
       {homeContent.faq.items.map(([question, answer]) => (
@@ -178,11 +199,11 @@ const schema = [
     eyebrow={homeContent.final.label}
     title={homeContent.final.headline}
     body={homeContent.final.body}
-    primary={{ label: "Get Free Feedback", href: "/contact" }}
+    primary={homeContent.floatingCta.primary}
   />
 
   <div class="sticky-cta">
-    <a class="primary-pill" href="/contact">Get Free Feedback</a>
+    <a class="primary-pill" href={homeContent.floatingCta.primary.href}>{homeContent.floatingCta.primary.label}</a>
+    <a class="outline-pill sticky-call" href={homeContent.floatingCta.call.href}>{homeContent.floatingCta.call.label}</a>
   </div>
 </BaseLayout>
-
