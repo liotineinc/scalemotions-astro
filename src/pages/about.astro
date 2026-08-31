@@ -10,7 +10,7 @@ import { breadcrumbSchema, organizationSchema } from "../data/schema";
 const schema = [organizationSchema(), breadcrumbSchema([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])];
 ---
 
-<BaseLayout
+<BaseLayout robots="noindex,nofollow"
   title="About - Built for Business Owners Tired of Guesswork"
   description="Scale Motion was created to give serious businesses a smarter, more transparent way to build marketing infrastructure."
   canonical="/about"
