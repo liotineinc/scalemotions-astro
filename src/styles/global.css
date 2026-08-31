@@ -622,6 +622,10 @@ select {
   box-shadow: var(--shadow-card);
 }
 
+.sticky-call {
+  display: none;
+}
+
 @media (max-width: 1080px) {
   .hero-inner,
   .grid-4 {
@@ -692,10 +696,16 @@ select {
     right: 0.75rem;
     bottom: 0.75rem;
     width: auto;
+    display: flex;
+    gap: 0.5rem;
   }
 
   .sticky-cta .primary-pill {
     width: 100%;
+  }
+
+  .sticky-call {
+    display: inline-flex;
   }
 }
 

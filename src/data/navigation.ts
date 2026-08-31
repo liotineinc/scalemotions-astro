@@ -1,3 +1,5 @@
+export const navCta = { label: "Start Free Recovery Check", href: "/contact" } as const;
+
 export const navigationLinks = [
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
